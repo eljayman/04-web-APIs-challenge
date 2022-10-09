@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/reset.css" />
+    <link rel="stylesheet" href="assets/style.css" />
+    <title>Quiz</title>
+  </head>
+  <body>
+    <header>
+      <nav id="view-high-scores">View High Scores</nav>
+      <h4 id="timer">placeholder text</h4>
+      <!-- This is where the 'View High Scores' link on the left and the timer on the right will go. -->
+    </header>
+    <main>
+      <section id="start-point">
+        <h1 id="quiz-heading" class="row">Coding Quiz Challenge</h1>
+        <p id="start-point-p" class="row">
+          Try to answer the following code-related questions within the time
+          limit. Keep in mind that incorrect answers will penalize your
+          score/time by ten seconds!
+        </p>
+        <button id="start-button" type="button start" class="row">
+          Start Quiz
+        </button>
+      </section>
+      <section id="quiz-template">
+        <h2 id="quiz-question-text">quiz question text</h2>
+        <div id="button-container" class="column">
+          <button type="button" id="selection-box-1">placeholder text</button>
+          <button type="button" id="selection-box-2">
+            longer placeholder text
+          </button>
+          <button type="button" id="selection-box-3">shorter text</button>
+          <button type="button" id="selection-box-4">placeholder text</button>
+        </div>
+      </section>
+      <section id="final-score">
+        <h1 id="all-done">All done!</h1>
+        <p id="final-score-text">Your final score is</p>
+        <div id="initial-box">
+          <label for="initials">Initials:</label>
+          <input type="text" id="initials" name="initials" />
+          <input id="submit" type="submit" value="Submit" />
+        </div>
+      </section>
+      <span class="correct-wrong">
+        <h3 id="correct-wrong">placeholder text</h3>
+      </div>
+      <!-- This is where the quiz code will be executed -->
+    </main>
+    <footer></footer>
+    <script scr="/assets/script.js"></script>
+  </body>
+</html>

@@ -11,7 +11,7 @@
   <body>
     <header>
       <nav id="view-high-scores">View High Scores</nav>
-      <h4 id="timer">placeholder text</h4>
+      <h4 id="timer">Time:</h4>
       <!-- This is where the 'View High Scores' link on the left and the timer on the right will go. -->
     </header>
     <main>
@@ -37,18 +37,26 @@
           <button type="button" id="selection-box-4">placeholder text</button>
         </div>
       </section>
-      <section id="final-score">
-        <h1 id="all-done">All done!</h1>
-        <p id="final-score-text">Your final score is</p>
+      <span class="correct-wrong">
+        <h3 id="correct-wrong">placeholder text</h3>
+      </span>
+      <section id="all-done">
+        <h1>All done!</h1>
+        <p id="all-done-text">Your final score is</p>
         <div id="initial-box">
           <label for="initials">Initials:</label>
           <input type="text" id="initials" name="initials" />
           <input id="submit" type="submit" value="Submit" />
         </div>
       </section>
-      <span class="correct-wrong">
-        <h3 id="correct-wrong">placeholder text</h3>
-      </div>
+      <section id="high-scores">
+        <h1 id="high-scores-text">High Scores</h1>
+        <table id="high-scores-table"></table>
+        <div id="two-buttons">
+          <button type="button" id="go-back">Go Back</button>
+          <button type="button" id="clear-scores">Clear Scores</button>
+        </div>
+      </section>
       <!-- This is where the quiz code will be executed -->
     </main>
     <footer></footer>

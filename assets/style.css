@@ -24,6 +24,10 @@ nav {
   /* border: solid 2px var(--border-color); */
   color: var(--button-color);
 }
+nav:hover {
+  cursor: pointer;
+  color: var(--border-color);
+}
 header h4 {
   padding: 1%;
   /* border: solid 2px var(--border-color); */
@@ -83,6 +87,11 @@ button {
   border-radius: 5%;
   font-size: 125%;
   height: fit-content;
+  transition: all 0.2s ease-in-out;
+}
+button:hover {
+  cursor: pointer;
+  background-color: var(--hover-color);
 }
 
 #quiz-template {

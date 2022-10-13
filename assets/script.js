@@ -8,6 +8,8 @@ var quizButton1 = document.getElementById("selection-box-1");
 var quizButton2 = document.getElementById("selection-box-2");
 var quizButton3 = document.getElementById("selection-box-3");
 var quizButton4 = document.getElementById("selection-box-4");
+let timerTime = [75];
+var allDone = document.getElementById("all-done");
 
 function startQuiz() {
   timerSet();
@@ -17,22 +19,41 @@ function startQuiz() {
 }
 
 function timerSet() {
-  var timerTime = [5];
   setInterval(countDown, 1000);
   function countDown() {
-    timerTime--;
-    document.getElementById("timer").innerHTML = "Time:  " + timerTime;
+    if (timerTime[0] >= 0 && quizTemplate.style.display == "flex") {
+      document.getElementById("timer").innerHTML = "Time:  " + timerTime[0];
+      timerTime[0]--;
+    } else endQuiz();
   }
 }
-
 function hideStart() {
   startDiv.style.display = "none";
 }
-
 function showQuiz() {
   quizTemplate.style.display = "flex";
 }
 
+function clickBtn1() {
+  wrongAnswer();
+}
+function clickBtn2() {
+  wrongAnswer();
+}
+function clickBtn3() {
+  if (quizButton3.innerText == "3. Alerts") {
+    correctAnswer();
+  } else if (quizButton3.innerText == "3. Parentheses") {
+    correctAnswer();
+  } else if (quizButton3.innerText == "3. Quotes") {
+    correctAnswer();
+  } else wrongAnswer();
+}
+function clickBtn4() {
+  if (quizButton4.innerText == "4. All of the Above") {
+    correctAnswer();
+  } else wrongAnswer();
+}
 function question1() {
   quizQuestion.innerText = "Commonly used data types DO NOT include:";
   quizButton1.innerText = "1. Strings";
@@ -64,6 +85,36 @@ function question4() {
   quizButton4.innerText = "4. Parentheses";
 }
 
+function correctAnswer() {
+  console.log("correct");
+}
+function wrongAnswer() {
+  timerTime[0] -= 5;
+  document.getElementById("timer").innerHTML = "Time:  " + timerTime[0];
+  if (quizQuestion.innerText == "Commonly used data types DO NOT include:") {
+    question2();
+  } else if (
+    quizQuestion.innerText ==
+    "The condition in an if/else statement is enclosed within ____."
+  ) {
+    question3();
+  } else if (
+    quizQuestion.innerText == "Arrays in JavaScript can be used to store ____."
+  ) {
+    question4();
+  } else endQuiz();
+}
+function endQuiz() {
+  hideQuiz();
+  showAllDone();
+}
+
+function hideQuiz() {
+  quizTemplate.style.display = "none";
+}
+function showAllDone() {
+  allDone.style.display = "flex";
+}
 // function question1()
 // creates question and answers, affects the display to show the #quiz-template
 // section, records the score or advances the timer, then logs the score and
@@ -75,3 +126,7 @@ function question4() {
 
 //
 startBtn.addEventListener("click", startQuiz);
+quizButton1.addEventListener("click", clickBtn1);
+quizButton2.addEventListener("click", clickBtn2);
+quizButton3.addEventListener("click", clickBtn3);
+quizButton4.addEventListener("click", clickBtn4);

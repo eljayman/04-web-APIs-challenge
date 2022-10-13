@@ -65,16 +65,22 @@ h1 {
 
 h2 {
   padding: 2%;
+  width: 100%;
   /* border: solid 2px var(--border-color); */
   font-size: 175%;
+}
+
+#quiz-template {
   width: 100%;
+  display: none;
+  flex-direction: column;
+  /* border: solid 2px var(--border-color); */
 }
 
 .column {
   /* border: solid 2px var(--border-color); */
   display: flex;
   flex-direction: column;
-  width: 100%;
 }
 
 button {
@@ -92,11 +98,6 @@ button {
 button:hover {
   cursor: pointer;
   background-color: var(--hover-color);
-}
-
-#quiz-template {
-  width: 100%;
-  display: none;
 }
 
 p {

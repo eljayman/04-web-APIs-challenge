@@ -2,6 +2,7 @@
   --button-color: rgb(21, 179, 165);
   --hover-color: rgb(150, 248, 240);
   --border-color: rgb(0, 4, 255);
+  --table-border: rgba(255, 243, 70, 0.89);
 }
 
 body {
@@ -34,12 +35,14 @@ header h4 {
   font-weight: normal;
 }
 
-main {
+main,
+footer {
   display: flex;
   flex-wrap: wrap;
   padding: 1%;
   /* border: solid 2px var(--border-color); */
   margin: 2% 15%;
+  transition: all 0.2s ease-in-out;
 }
 #start-point {
   display: flex;
@@ -138,4 +141,11 @@ span {
   flex-direction: column;
   width: 100%;
   justify-content: center;
+}
+table {
+  font-size: 150%;
+  border: 2px solid var(--table-border);
+}
+tr {
+  background-image: linear-gradient(var(--table-border), var(--button-color));
 }

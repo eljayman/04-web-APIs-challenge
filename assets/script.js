@@ -18,6 +18,7 @@ var clearBtn = document.getElementById("clear-scores");
 var highScores = document.getElementById("high-scores");
 var goBackBtn = document.getElementById("go-back");
 var headerTag = document.getElementById("header");
+const highScoresTable = document.getElementById("high-scores-table");
 
 //timer
 function countDown() {
@@ -63,37 +64,52 @@ function clickBtn4() {
     correctAnswer();
   } else wrongAnswer();
 }
+
 function formSubmit() {
   const inputInitials = document.getElementById("initials").value;
-  localStorage.setItem(inputInitials, storeScore[0]);
-  tableBuilder();
-  viewHighScores();
+  if (inputInitials.length >= 1 && inputInitials.length <= 8) {
+    localStorage.setItem(inputInitials, storeScore[0]);
+    tableBuilder();
+    viewHighScores();
+  } else {
+    window.alert("Please enter initials (1-8 characters)");
+  }
 }
 function tableBuilder() {
   if (localStorage.length != 0) {
     tableHead();
     tableRows();
-  }
+  } else tableHead();
 }
-const highScoresTable = document.getElementById("high-scores-table");
+
 function tableHead() {
   const tableHeader = document.createElement("tr");
-  tableHeader.innerHTML = "<tr><th>name</th><th>score</th></tr>";
-  highScoresTable.appendChild(tableHeader);
-  console.log(localStorage);
+  tableHeader.innerHTML = "<tr><th>Name</th><th>Score</th></tr>";
+  if (document.getElementById("high-scores-table").innerHTML == "") {
+    highScoresTable.appendChild(tableHeader);
+  }
 }
 function tableRows() {
-  var scoreString = JSON.stringify(localStorage);
-  console.log(scoreString);
-  for (i = 0; i < localStorage.length; i++) {
-    let tableRow = document.createElement("tr");
-    tableRow.innerHTML =
-      "<tr><th>" +
-      // +
-      "</th><th>" +
-      // localStorage.getItem(Value[i]) +
-      "</th></tr>";
-    highScoresTable.appendChild(tableRow);
+  let tableObject = { localStorage };
+  let tableString = JSON.stringify({ tableObject });
+  let tableParse = JSON.parse(tableString);
+  const simObject = tableParse.tableObject.localStorage;
+  if (
+    document.getElementById("high-scores-table").innerHTML ==
+    "<tr><th>Name</th><th>Score</th></tr>"
+  ) {
+    for (let key in simObject) {
+      if (simObject.hasOwnProperty(key)) {
+        let tableRow = document.createElement("tr");
+        tableRow.innerHTML =
+          "<tr><th>" +
+          `${key}` +
+          "</th><th>" +
+          `${simObject[key]}` +
+          "</th></tr>";
+        highScoresTable.appendChild(tableRow);
+      }
+    }
   }
 }
 function goBack() {
@@ -101,6 +117,8 @@ function goBack() {
 }
 function clearHighScores() {
   localStorage.clear();
+  highScoresTable.innerHTML = "";
+  tableHead();
 }
 
 //shows answer feedback for 2567 ms
@@ -242,12 +260,14 @@ function showAllDone() {
 function hideAllDone() {
   allDone.style.display = "none";
 }
+
 function viewHighScores() {
   hideStart();
   hideAllDone();
   hideQuiz();
   hideHeader();
   correctWrongField.style.display = "none";
+  tableBuilder();
   highScores.style.display = "flex";
 }
 
